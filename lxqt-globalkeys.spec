@@ -1,20 +1,29 @@
 %define major 0
-%define libname %mklibname lxqt-globalkeys %{major}
-%define devname %mklibname lxqt-globalkeys -d
-%define uiname %mklibname lxqt-globalkeys-ui %{major}
-%define uidevname %mklibname lxqt-globalkeys-ui -d
+%define libname %mklibname lxqt-globalkeys-qt5 %{major}
+%define devname %mklibname lxqt-globalkeys-qt5 -d
+%define uiname %mklibname lxqt-globalkeys-ui-qt5 %{major}
+%define uidevname %mklibname lxqt-globalkeys-ui-qt5 -d
+%define git 20140802
 
 Summary:	Global keys config module for LXQt
 Name:		lxqt-globalkeys
-Version:	0.7.0
-Release:	4
+Version:	0.8.0
+%if %git
+Source0:	%{name}-%{git}.tar.xz
+Release:	0.%{git}.1
+%else
+Source0:	http://lxqt.org/downloads/lxqt/%{version}/%{name}-%{version}.tar.xz
+Release:	1
+%endif
 License:	LGPLv2.1+
 Group:		Graphical desktop/Other
 Url:		http://lxqt.org
-Source0:	http://lxqt.org/downloads/lxqt/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:	cmake
-BuildRequires:	qt4-devel
-BuildRequires:	pkgconfig(lxqt)
+BuildRequires:	qt5-devel
+BuildRequires:	pkgconfig(lxqt-qt5)
+BuildRequires:	cmake(qt5xdg)
+BuildRequires:	cmake(Qt5X11Extras)
+BuildRequires:	cmake(Qt5LinguistTools)
 
 %description
 Global keys config module for LXQt.
@@ -22,7 +31,7 @@ Global keys config module for LXQt.
 %files
 %{_bindir}/*
 %{_datadir}/applications/*.desktop
-%{_datadir}/lxqt/lxqt-config-globalkeys*
+%{_datadir}/lxqt-qt5/lxqt-config-globalkeys*
 
 #----------------------------------------------------------------------------
 
@@ -34,7 +43,7 @@ Group:		System/Libraries
 The LXQt globalkeys library.
 
 %files -n %{libname}
-%{_libdir}/liblxqt-globalkeys.so.%{major}*
+%{_libdir}/liblxqt-globalkeys-qt5.so.%{major}*
 
 #----------------------------------------------------------------------------
 
@@ -46,7 +55,7 @@ Group:		System/Libraries
 The LXQt globalkeys UI library.
 
 %files -n %{uiname}
-%{_libdir}/liblxqt-globalkeys-ui.so.%{major}*
+%{_libdir}/liblxqt-globalkeys-ui-qt5.so.%{major}*
 
 #----------------------------------------------------------------------------
 
@@ -59,11 +68,10 @@ Requires:	%{libname} = %{EVRD}
 Development files for the LXQt globalkeys library.
 
 %files -n %{devname}
-%{_libdir}/liblxqt-globalkeys.so
-%{_includedir}/lxqt-globalkeys.h
-%{_includedir}/lxqt-globalkeys
-%{_libdir}/pkgconfig/lxqt-globalkeys.pc
-%{_datadir}/cmake/lxqt_globalkeys
+%{_libdir}/liblxqt-globalkeys-qt5.so
+%{_includedir}/lxqt-globalkeys-qt5
+%{_libdir}/pkgconfig/lxqt-globalkeys-qt5.pc
+%{_datadir}/cmake/lxqt-globalkeys-qt5
 
 #----------------------------------------------------------------------------
 
@@ -76,18 +84,18 @@ Requires:	%{uiname} = %{EVRD}
 Development files for the LXQt globalkeys UI library.
 
 %files -n %{uidevname}
-%{_libdir}/liblxqt-globalkeys-ui.so
-%{_includedir}/lxqt-globalkeys-ui
-%{_libdir}/pkgconfig/lxqt-globalkeys-ui.pc
-%{_datadir}/cmake/lxqt_globalkeys_ui
+%{_libdir}/liblxqt-globalkeys-ui-qt5.so
+%{_includedir}/lxqt-globalkeys-ui-qt5
+%{_libdir}/pkgconfig/lxqt-globalkeys-ui-qt5.pc
+%{_datadir}/cmake/lxqt-globalkeys-ui-qt5
 
 #----------------------------------------------------------------------------
 
 %prep
-%setup -q -c %{name}-%{version}
+%setup -q
 
 %build
-%cmake
+%cmake -DUSE_QT5:BOOL=ON
 %make
 
 %install
