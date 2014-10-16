@@ -3,7 +3,7 @@
 %define devname %mklibname lxqt-globalkeys-qt5 -d
 %define uiname %mklibname lxqt-globalkeys-ui-qt5 %{major}
 %define uidevname %mklibname lxqt-globalkeys-ui-qt5 -d
-%define git 20140802
+%define git 0
 
 Summary:	Global keys config module for LXQt
 Name:		lxqt-globalkeys
@@ -31,7 +31,7 @@ Global keys config module for LXQt.
 %files
 %{_bindir}/*
 %{_datadir}/applications/*.desktop
-%{_datadir}/lxqt-qt5/lxqt-config-globalkeys*
+%{_datadir}/lxqt-qt5/translations
 
 #----------------------------------------------------------------------------
 
