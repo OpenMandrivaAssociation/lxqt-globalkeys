@@ -76,7 +76,7 @@ Development files for the LXQt globalkeys library.
 %{_libdir}/liblxqt-globalkeys.so
 %{_includedir}/lxqt-globalkeys
 %{_libdir}/pkgconfig/lxqt-globalkeys.pc
-%{_datadir}/cmake/lxqt-globalkeys
+%{_libdir}/cmake/lxqt-globalkeys
 
 #----------------------------------------------------------------------------
 
@@ -93,8 +93,7 @@ Development files for the LXQt globalkeys UI library.
 %{_libdir}/liblxqt-globalkeys-ui.so
 %{_includedir}/lxqt-globalkeys-ui
 %{_libdir}/pkgconfig/lxqt-globalkeys-ui.pc
-%{_datadir}/cmake/lxqt-globalkeys-ui
-
+%{_libdir}/cmake/lxqt-globalkeys-ui
 #----------------------------------------------------------------------------
 
 %prep
