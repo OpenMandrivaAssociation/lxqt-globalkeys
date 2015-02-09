@@ -31,7 +31,7 @@ Global keys config module for LXQt.
 %files
 %{_bindir}/*
 %{_datadir}/applications/*.desktop
-%{_datadir}/lxqt-qt5/translations
+%{_datadir}/lxqt/translations/lxqt-config-globalkeyshortcuts
 
 #----------------------------------------------------------------------------
 
@@ -45,7 +45,7 @@ Conflicts:	%{_lib}lxqt-globalkeys-qt5_0 < 0.9.0
 The LXQt globalkeys library.
 
 %files -n %{libname}
-%{_libdir}/liblxqt-globalkeys-qt5.so.%{major}*
+%{_libdir}/liblxqt-globalkeys.so.%{major}*
 
 #----------------------------------------------------------------------------
 
@@ -59,7 +59,7 @@ Conflicts:	%{_lib}lxqt-globalkeys-ui-qt5_0 < 0.9.0
 The LXQt globalkeys UI library.
 
 %files -n %{uiname}
-%{_libdir}/liblxqt-globalkeys-ui-qt5.so.%{major}*
+%{_libdir}/liblxqt-globalkeys-ui.so.%{major}*
 
 #----------------------------------------------------------------------------
 
@@ -73,10 +73,10 @@ Requires:	%{libname} = %{EVRD}
 Development files for the LXQt globalkeys library.
 
 %files -n %{devname}
-%{_libdir}/liblxqt-globalkeys-qt5.so
-%{_includedir}/lxqt-globalkeys-qt5
-%{_libdir}/pkgconfig/lxqt-globalkeys-qt5.pc
-%{_datadir}/cmake/lxqt-globalkeys-qt5
+%{_libdir}/liblxqt-globalkeys.so
+%{_includedir}/lxqt-globalkeys
+%{_libdir}/pkgconfig/lxqt-globalkeys.pc
+%{_datadir}/cmake/lxqt-globalkeys
 
 #----------------------------------------------------------------------------
 
@@ -90,10 +90,10 @@ Requires:	%{uiname} = %{EVRD}
 Development files for the LXQt globalkeys UI library.
 
 %files -n %{uidevname}
-%{_libdir}/liblxqt-globalkeys-ui-qt5.so
-%{_includedir}/lxqt-globalkeys-ui-qt5
-%{_libdir}/pkgconfig/lxqt-globalkeys-ui-qt5.pc
-%{_datadir}/cmake/lxqt-globalkeys-ui-qt5
+%{_libdir}/liblxqt-globalkeys-ui.so
+%{_includedir}/lxqt-globalkeys-ui
+%{_libdir}/pkgconfig/lxqt-globalkeys-ui.pc
+%{_datadir}/cmake/lxqt-globalkeys-ui
 
 #----------------------------------------------------------------------------
 
