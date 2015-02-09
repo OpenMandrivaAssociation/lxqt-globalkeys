@@ -1,26 +1,26 @@
 %define major 0
-%define libname %mklibname lxqt-globalkeys-qt5 %{major}
-%define devname %mklibname lxqt-globalkeys-qt5 -d
-%define uiname %mklibname lxqt-globalkeys-ui-qt5 %{major}
-%define uidevname %mklibname lxqt-globalkeys-ui-qt5 -d
+%define libname %mklibname lxqt-globalkeys %{major}
+%define devname %mklibname lxqt-globalkeys-d
+%define uiname %mklibname lxqt-globalkeys-ui %{major}
+%define uidevname %mklibname lxqt-globalkeys-ui -d
 %define git 0
 
 Summary:	Global keys config module for LXQt
 Name:		lxqt-globalkeys
-Version:	0.8.0
+Version:	0.9.0
 %if %git
 Source0:	%{name}-%{git}.tar.xz
 Release:	0.%{git}.1
 %else
 Source0:	http://lxqt.org/downloads/lxqt/%{version}/%{name}-%{version}.tar.xz
-Release:	2
+Release:	1
 %endif
 License:	LGPLv2.1+
 Group:		Graphical desktop/Other
 Url:		http://lxqt.org
 BuildRequires:	cmake
 BuildRequires:	qt5-devel
-BuildRequires:	pkgconfig(lxqt-qt5)
+BuildRequires:	pkgconfig(lxqt)
 BuildRequires:	cmake(qt5xdg)
 BuildRequires:	cmake(Qt5X11Extras)
 BuildRequires:	cmake(Qt5LinguistTools)
@@ -38,6 +38,8 @@ Global keys config module for LXQt.
 %package -n %{libname}
 Summary:	The LXQt globalkeys library
 Group:		System/Libraries
+Conflicts:	%{_lib}lxqt-globalkeys-qt5_0 < 0.9.0
+%rename		%{_lib}lxqt-globalkeys-qt5_0
 
 %description -n %{libname}
 The LXQt globalkeys library.
@@ -50,6 +52,8 @@ The LXQt globalkeys library.
 %package -n %{uiname}
 Summary:	The LXQt globalkeys UI library
 Group:		System/Libraries
+Conflicts:	%{_lib}lxqt-globalkeys-ui-qt5_0 < 0.9.0
+%rename		%{_lib}lxqt-globalkeys-ui-qt5_0
 
 %description -n %{uiname}
 The LXQt globalkeys UI library.
@@ -63,6 +67,7 @@ The LXQt globalkeys UI library.
 Summary:	Development files for the LXQt globalkeys library
 Group:		Development/C++
 Requires:	%{libname} = %{EVRD}
+%rename		%{_lib}lxqt-globalkeys-qt5-devel
 
 %description -n %{devname}
 Development files for the LXQt globalkeys library.
@@ -79,6 +84,7 @@ Development files for the LXQt globalkeys library.
 Summary:	Development files for the LXQt globalkeys UI library
 Group:		Development/C++
 Requires:	%{uiname} = %{EVRD}
+%rename		%{_lib}lxqt-globalkeys-ui-qt5-devel
 
 %description -n %{uidevname}
 Development files for the LXQt globalkeys UI library.
