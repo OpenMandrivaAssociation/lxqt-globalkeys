@@ -1,6 +1,6 @@
 %define major 0
 %define libname %mklibname lxqt-globalkeys %{major}
-%define devname %mklibname lxqt-globalkeys-d
+%define devname %mklibname lxqt-globalkeys -d
 %define uiname %mklibname lxqt-globalkeys-ui %{major}
 %define uidevname %mklibname lxqt-globalkeys-ui -d
 %define git 0
