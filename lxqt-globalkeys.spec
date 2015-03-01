@@ -13,7 +13,7 @@ Source0:	%{name}-%{git}.tar.xz
 Release:	0.%{git}.1
 %else
 Source0:	http://lxqt.org/downloads/lxqt/%{version}/%{name}-%{version}.tar.xz
-Release:	3
+Release:	4
 %endif
 License:	LGPLv2.1+
 Group:		Graphical desktop/Other
@@ -24,7 +24,6 @@ BuildRequires:	pkgconfig(lxqt)
 BuildRequires:	cmake(qt5xdg)
 BuildRequires:	cmake(Qt5X11Extras)
 BuildRequires:	cmake(Qt5LinguistTools)
-BuildRequires:	desktop-file-utils
 
 %description
 Global keys config module for LXQt.
@@ -105,8 +104,5 @@ Development files for the LXQt globalkeys UI library.
 
 %install
 %makeinstall_std -C build
-
-desktop-file-edit --remove-category=LXQt --add-category=X-LXQt \
-	--remove-only-show-in=LXQt --add-only-show-in=X-LXQt %{buildroot}%{_datadir}/applications/lxqt-config-globalkeyshortcuts.desktop
 
 %find_lang lxqt-config-globalkeyshortcuts --with-qt
