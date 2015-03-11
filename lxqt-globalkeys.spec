@@ -13,17 +13,19 @@ Source0:	%{name}-%{git}.tar.xz
 Release:	0.%{git}.1
 %else
 Source0:	http://lxqt.org/downloads/lxqt/%{version}/%{name}-%{version}.tar.xz
-Release:	4
+Release:	5
 %endif
 License:	LGPLv2.1+
 Group:		Graphical desktop/Other
 Url:		http://lxqt.org
 BuildRequires:	cmake
-BuildRequires:	qt5-devel
-BuildRequires:	pkgconfig(lxqt)
-BuildRequires:	cmake(qt5xdg)
-BuildRequires:	cmake(Qt5X11Extras)
+BuildRequires:	qmake5
+BuildRequires:	cmake(lxqt)
+BuildRequires:	cmake(Qt5Widgets)
+BuildRequires:	cmake(Qt5DBus)
 BuildRequires:	cmake(Qt5LinguistTools)
+BuildRequires:	cmake(KF5WindowSystem)
+BuildRequires:	pkgconfig(x11)
 
 %description
 Global keys config module for LXQt.
@@ -99,7 +101,7 @@ Development files for the LXQt globalkeys UI library.
 %setup -q
 
 %build
-%cmake -DUSE_QT5:BOOL=ON
+%cmake_qt5
 %make
 
 %install
