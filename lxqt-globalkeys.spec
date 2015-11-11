@@ -7,13 +7,13 @@
 
 Summary:	Global keys config module for LXQt
 Name:		lxqt-globalkeys
-Version:	0.9.0
+Version:	0.10.0
 %if %git
 Source0:	%{name}-%{git}.tar.xz
 Release:	0.%{git}.1
 %else
-Source0:	http://lxqt.org/downloads/lxqt/%{version}/%{name}-%{version}.tar.xz
-Release:	6
+Source0:	https://github.com/lxde/%{name}/archive/%{version}.tar.gz
+Release:	1
 %endif
 License:	LGPLv2.1+
 Group:		Graphical desktop/Other
@@ -77,7 +77,7 @@ Development files for the LXQt globalkeys library.
 %{_libdir}/liblxqt-globalkeys.so
 %{_includedir}/lxqt-globalkeys
 %{_libdir}/pkgconfig/lxqt-globalkeys.pc
-%{_libdir}/cmake/lxqt-globalkeys
+%{_datadir}/cmake/lxqt-globalkeys
 
 #----------------------------------------------------------------------------
 
@@ -94,7 +94,7 @@ Development files for the LXQt globalkeys UI library.
 %{_libdir}/liblxqt-globalkeys-ui.so
 %{_includedir}/lxqt-globalkeys-ui
 %{_libdir}/pkgconfig/lxqt-globalkeys-ui.pc
-%{_libdir}/cmake/lxqt-globalkeys-ui
+%{_datadir}/cmake/lxqt-globalkeys-ui
 #----------------------------------------------------------------------------
 
 %prep
@@ -108,3 +108,5 @@ Development files for the LXQt globalkeys UI library.
 %makeinstall_std -C build
 
 %find_lang lxqt-config-globalkeyshortcuts --with-qt
+
+sed -i -e 's,^libdir=.*,libdir=%{_libdir},g' %{buildroot}%{_libdir}/pkgconfig/*.pc
