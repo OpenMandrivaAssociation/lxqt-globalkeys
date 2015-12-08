@@ -12,7 +12,7 @@ Version:	0.10.0
 Source0:	%{name}-%{git}.tar.xz
 Release:	1.%{git}.1
 %else
-Source0:	https://github.com/lxde/%{name}/archive/%{version}.tar.gz
+Source0:	https://github.com/lxde/%{name}/archive/%{name}-%{version}.tar.xz
 Release:	1
 %endif
 License:	LGPLv2.1+
