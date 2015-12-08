@@ -10,7 +10,7 @@ Name:		lxqt-globalkeys
 Version:	0.10.0
 %if %git
 Source0:	%{name}-%{git}.tar.xz
-Release:	0.%{git}.1
+Release:	1.%{git}.1
 %else
 Source0:	https://github.com/lxde/%{name}/archive/%{version}.tar.gz
 Release:	1
