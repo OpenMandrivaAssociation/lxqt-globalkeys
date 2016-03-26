@@ -13,13 +13,14 @@ Source0:	%{name}-%{git}.tar.xz
 Release:	1.%{git}.1
 %else
 Source0:	https://github.com/lxde/%{name}/archive/%{name}-%{version}.tar.xz
-Release:	6
+Release:	7
 %endif
 License:	LGPLv2.1+
 Group:		Graphical desktop/Other
 Url:		http://lxqt.org
 BuildRequires:	cmake
 BuildRequires:	qmake5
+BuildRequires:	ninja
 BuildRequires:	cmake(lxqt)
 BuildRequires:	cmake(Qt5Widgets)
 BuildRequires:	cmake(Qt5DBus)
@@ -100,12 +101,23 @@ Development files for the LXQt globalkeys UI library.
 %prep
 %setup -q
 
+%cmake_qt5 -G Ninja
+
 %build
-%cmake_qt5
-%make
+# Need to be in a UTF-8 locale so grep (used by the desktop file
+# translation generator) doesn't scream about translations containing
+# "binary" (non-ascii) characters
+export LANG=en_US.utf-8
+export LC_ALL=en_US.utf-8
+%ninja -C build
 
 %install
-%makeinstall_std -C build
+# Need to be in a UTF-8 locale so grep (used by the desktop file
+# translation generator) doesn't scream about translations containing
+# "binary" (non-ascii) characters
+export LANG=en_US.utf-8
+export LC_ALL=en_US.utf-8
+%ninja_install -C build
 
 %find_lang lxqt-config-globalkeyshortcuts --with-qt
 
