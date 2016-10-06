@@ -7,13 +7,13 @@
 
 Summary:	Global keys config module for LXQt
 Name:		lxqt-globalkeys
-Version:	0.10.0
+Version:	0.11.0
 %if %git
 Source0:	%{name}-%{git}.tar.xz
 Release:	1.%{git}.1
 %else
 Source0:	https://github.com/lxde/%{name}/archive/%{name}-%{version}.tar.xz
-Release:	7
+Release:	1
 %endif
 License:	LGPLv2.1+
 Group:		Graphical desktop/Other
