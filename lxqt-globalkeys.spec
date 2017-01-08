@@ -7,7 +7,7 @@
 
 Summary:	Global keys config module for LXQt
 Name:		lxqt-globalkeys
-Version:	0.11.0
+Version:	0.11.1
 %if %git
 Source0:	%{name}-%{git}.tar.xz
 Release:	1.%{git}.1
