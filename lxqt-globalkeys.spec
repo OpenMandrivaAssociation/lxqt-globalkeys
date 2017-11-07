@@ -7,12 +7,12 @@
 
 Summary:	Global keys config module for LXQt
 Name:		lxqt-globalkeys
-Version:	0.11.1
+Version:	0.12.0
 %if %git
 Source0:	%{name}-%{git}.tar.xz
-Release:	1.%{git}.1
+Release:	0.%{git}.1
 %else
-Source0:	https://github.com/lxde/%{name}/archive/%{name}-%{version}.tar.xz
+Source0:	https://downloads.lxqt.org/downloads/%{name}/%{version}/%{name}-%{version}.tar.xz
 Release:	1
 %endif
 License:	LGPLv2.1+
@@ -27,6 +27,12 @@ BuildRequires:	cmake(Qt5DBus)
 BuildRequires:	cmake(Qt5LinguistTools)
 BuildRequires:	cmake(KF5WindowSystem)
 BuildRequires:	pkgconfig(x11)
+BuildRequires:	lxqt-build-tools git-core
+# lxqt-globalkeys triggers clang bug
+# https://bugs.llvm.org/show_bug.cgi?id=33930
+# FIXME remove when we move to clang 6 or the
+# fix is backported.
+BuildRequires:	gcc gcc-c++
 
 %description
 Global keys config module for LXQt.
@@ -34,6 +40,8 @@ Global keys config module for LXQt.
 %files -f lxqt-config-globalkeyshortcuts.lang
 %{_bindir}/*
 %{_datadir}/applications/*.desktop
+%{_sysconfdir}/xdg/qt5/autostart/lxqt-globalkeyshortcuts.desktop
+%{_sysconfdir}/xdg/qt5/lxqt/globalkeyshortcuts.conf
 
 #----------------------------------------------------------------------------
 
@@ -100,6 +108,12 @@ Development files for the LXQt globalkeys UI library.
 
 %prep
 %setup -q
+# lxqt-globalkeys triggers clang bug
+# https://bugs.llvm.org/show_bug.cgi?id=33930
+# FIXME remove when we move to clang 6 or the
+# fix is backported.
+export CC=gcc
+export CXX=g++
 
 %cmake_qt5 -G Ninja
 
