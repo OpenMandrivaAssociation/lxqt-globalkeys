@@ -13,7 +13,7 @@ Source0:	%{name}-%{git}.tar.xz
 Release:	0.%{git}.1
 %else
 Source0:	https://downloads.lxqt.org/downloads/%{name}/%{version}/%{name}-%{version}.tar.xz
-Release:	1
+Release:	2
 %endif
 License:	LGPLv2.1+
 Group:		Graphical desktop/Other
@@ -40,8 +40,8 @@ Global keys config module for LXQt.
 %files -f lxqt-config-globalkeyshortcuts.lang
 %{_bindir}/*
 %{_datadir}/applications/*.desktop
-%{_sysconfdir}/xdg/qt5/autostart/lxqt-globalkeyshortcuts.desktop
-%{_sysconfdir}/xdg/qt5/lxqt/globalkeyshortcuts.conf
+%{_sysconfdir}/xdg/autostart/lxqt-globalkeyshortcuts.desktop
+%{_sysconfdir}/xdg/lxqt/globalkeyshortcuts.conf
 
 #----------------------------------------------------------------------------
 
