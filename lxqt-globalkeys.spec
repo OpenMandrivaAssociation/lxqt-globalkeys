@@ -13,7 +13,7 @@ Source0:	%{name}-%{git}.tar.xz
 Release:	0.%{git}.1
 %else
 Source0:	https://downloads.lxqt.org/downloads/%{name}/%{version}/%{name}-%{version}.tar.xz
-Release:	3
+Release:	4
 %endif
 License:	LGPLv2.1+
 Group:		Graphical desktop/Other
@@ -33,6 +33,7 @@ BuildRequires:	lxqt-build-tools git-core
 # FIXME remove when we move to clang 6 or the
 # fix is backported.
 BuildRequires:	gcc gcc-c++
+Conflicts:	lxqt-l10n < 0.12.0-6
 
 %description
 Global keys config module for LXQt.
