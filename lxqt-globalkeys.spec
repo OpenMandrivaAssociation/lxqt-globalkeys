@@ -7,13 +7,13 @@
 
 Summary:	Global keys config module for LXQt
 Name:		lxqt-globalkeys
-Version:	0.13.0
+Version:	0.14.0
 %if %git
 Source0:	%{name}-%{git}.tar.xz
-Release:	0.%{git}.1
+Release:	1.%{git}.1
 %else
 Source0:	https://downloads.lxqt.org/downloads/%{name}/%{version}/%{name}-%{version}.tar.xz
-Release:	3
+Release:	1
 %endif
 License:	LGPLv2.1+
 Group:		Graphical desktop/Other
@@ -38,7 +38,7 @@ Conflicts:	lxqt-l10n < 0.12.0-6
 %description
 Global keys config module for LXQt.
 
-%files
+%files -f %{name}.lang
 %{_bindir}/*
 %{_datadir}/applications/*.desktop
 %{_sysconfdir}/xdg/autostart/lxqt-globalkeyshortcuts.desktop
@@ -130,3 +130,5 @@ export LC_ALL=en_US.utf-8
 %ninja_install -C build
 
 sed -i -e 's,^libdir=.*,libdir=%{_libdir},g' %{buildroot}%{_libdir}/pkgconfig/*.pc
+
+%find_lang %{name} --with-qt --all-name
