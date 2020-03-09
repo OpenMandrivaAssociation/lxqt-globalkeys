@@ -13,7 +13,7 @@ Source0:	%{name}-%{git}.tar.xz
 Release:	1.%{git}.1
 %else
 Source0:	https://downloads.lxqt.org/downloads/%{name}/%{version}/%{name}-%{version}.tar.xz
-Release:	1
+Release:	2
 %endif
 License:	LGPLv2.1+
 Group:		Graphical desktop/Other
