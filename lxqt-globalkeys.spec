@@ -28,7 +28,7 @@ BuildRequires:	cmake(Qt5DBus)
 BuildRequires:	cmake(Qt5LinguistTools)
 BuildRequires:	cmake(KF5WindowSystem)
 BuildRequires:	pkgconfig(x11)
-BuildRequires:	lxqt-build-tools git-core
+BuildRequires:	lxqt-build-tools
 Conflicts:	lxqt-l10n < 0.12.0-6
 
 %description
@@ -106,7 +106,7 @@ Development files for the LXQt globalkeys UI library.
 %prep
 %autosetup -p1
 %cmake_qt5 \
-	-DPULL_TRANSLATIONS:BOOL=OFF \
+	-DUPDATE_TRANSLATIONS:BOOL=OFF \
 	-G Ninja
 
 %build
