@@ -39,7 +39,7 @@ Global keys config module for LXQt.
 %{_datadir}/applications/*.desktop
 %{_sysconfdir}/xdg/autostart/lxqt-globalkeyshortcuts.desktop
 %{_datadir}/lxqt/globalkeyshortcuts.conf
-
+%{_datadir}/lxqt/translations/lxqt-config-globalkeyshortcuts
 #----------------------------------------------------------------------------
 
 %package -n %{libname}
