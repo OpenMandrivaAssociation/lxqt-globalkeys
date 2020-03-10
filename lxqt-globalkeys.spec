@@ -18,6 +18,7 @@ Release:	2
 License:	LGPLv2.1+
 Group:		Graphical desktop/Other
 Url:		http://lxqt.org
+Patch0:		lxqt-globalkeys-0.14.3-fix-build-with-qt.patch
 BuildRequires:	cmake
 BuildRequires:	qmake5
 BuildRequires:	ninja
@@ -28,11 +29,6 @@ BuildRequires:	cmake(Qt5LinguistTools)
 BuildRequires:	cmake(KF5WindowSystem)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	lxqt-build-tools git-core
-# lxqt-globalkeys triggers clang bug
-# https://bugs.llvm.org/show_bug.cgi?id=33930
-# FIXME remove when we move to clang 6 or the
-# fix is backported.
-BuildRequires:	gcc gcc-c++
 Conflicts:	lxqt-l10n < 0.12.0-6
 
 %description
