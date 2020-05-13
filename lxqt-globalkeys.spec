@@ -7,18 +7,17 @@
 
 Summary:	Global keys config module for LXQt
 Name:		lxqt-globalkeys
-Version:	0.14.3
+Version:	0.15.0
 %if %git
 Source0:	%{name}-%{git}.tar.xz
-Release:	1.%{git}.1
+Release:	0.%{git}.1
 %else
-Source0:	https://downloads.lxqt.org/downloads/%{name}/%{version}/%{name}-%{version}.tar.xz
-Release:	2
+Source0:	https://github.com/lxqt/lxqt-globalkeys/releases/download/%{version}/lxqt-globalkeys-%{version}.tar.xz
+Release:	1
 %endif
 License:	LGPLv2.1+
 Group:		Graphical desktop/Other
 Url:		http://lxqt.org
-Patch0:		lxqt-globalkeys-0.14.3-fix-build-with-qt.patch
 BuildRequires:	cmake
 BuildRequires:	qmake5
 BuildRequires:	ninja
