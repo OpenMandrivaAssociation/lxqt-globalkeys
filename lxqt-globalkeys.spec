@@ -1,4 +1,4 @@
-%define major 0
+%define major 1
 %define libname %mklibname lxqt-globalkeys %{major}
 %define devname %mklibname lxqt-globalkeys -d
 %define uiname %mklibname lxqt-globalkeys-ui %{major}
@@ -7,10 +7,10 @@
 
 Summary:	Global keys config module for LXQt
 Name:		lxqt-globalkeys
-Version:	0.17.0
+Version:	1.0.0
 %if %git
 Source0:	%{name}-%{git}.tar.xz
-Release:	1.%{git}.1
+Release:	0.%{git}.1
 %else
 Source0:	https://github.com/lxqt/lxqt-globalkeys/releases/download/%{version}/lxqt-globalkeys-%{version}.tar.xz
 Release:	1
