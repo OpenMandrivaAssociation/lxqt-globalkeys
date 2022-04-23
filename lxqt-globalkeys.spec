@@ -7,10 +7,10 @@
 
 Summary:	Global keys config module for LXQt
 Name:		lxqt-globalkeys
-Version:	1.0.1
+Version:	1.1.0
 %if %git
 Source0:	%{name}-%{git}.tar.xz
-Release:	0.%{git}.1
+Release:	1.%{git}.1
 %else
 Source0:	https://github.com/lxqt/lxqt-globalkeys/releases/download/%{version}/lxqt-globalkeys-%{version}.tar.xz
 Release:	1
@@ -38,7 +38,7 @@ Global keys config module for LXQt.
 %{_datadir}/applications/*.desktop
 %{_sysconfdir}/xdg/autostart/lxqt-globalkeyshortcuts.desktop
 %{_datadir}/lxqt/globalkeyshortcuts.conf
-%{_datadir}/lxqt/translations/lxqt-config-globalkeyshortcuts
+%dir %{_datadir}/lxqt/translations/lxqt-config-globalkeyshortcuts
 #----------------------------------------------------------------------------
 
 %package -n %{libname}
