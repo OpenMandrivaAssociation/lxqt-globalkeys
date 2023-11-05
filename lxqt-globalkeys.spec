@@ -3,18 +3,17 @@
 %define devname %mklibname lxqt-globalkeys -d
 %define uiname %mklibname lxqt-globalkeys-ui %{major}
 %define uidevname %mklibname lxqt-globalkeys-ui -d
-%define git 0
+#define git 0
 
 Summary:	Global keys config module for LXQt
 Name:		lxqt-globalkeys
 Version:	1.4.0
-%if %git
+%if 0%{?git:1}
 Source0:	%{name}-%{git}.tar.xz
-Release:	1.%{git}1
 %else
 Source0:	https://github.com/lxqt/lxqt-globalkeys/releases/download/%{version}/lxqt-globalkeys-%{version}.tar.xz
-Release:	1
 %endif
+Release:	%{?git:0.%{git}.}1
 License:	LGPLv2.1+
 Group:		Graphical desktop/Other
 Url:		http://lxqt.org
