@@ -1,13 +1,15 @@
-%define major 1
-%define libname %mklibname lxqt-globalkeys %{major}
+%define major 2
+%define oldlibname %mklibname lxqt-globalkeys 1
+%define libname %mklibname lxqt-globalkeys
 %define devname %mklibname lxqt-globalkeys -d
-%define uiname %mklibname lxqt-globalkeys-ui %{major}
+%define olduiname %mklibname lxqt-globalkeys-ui 1
+%define uiname %mklibname lxqt-globalkeys-ui
 %define uidevname %mklibname lxqt-globalkeys-ui -d
 #define git 0
 
 Summary:	Global keys config module for LXQt
 Name:		lxqt-globalkeys
-Version:	1.4.0
+Version:	2.0.0
 %if 0%{?git:1}
 Source0:	%{name}-%{git}.tar.xz
 %else
@@ -18,13 +20,12 @@ License:	LGPLv2.1+
 Group:		Graphical desktop/Other
 Url:		http://lxqt.org
 BuildRequires:	cmake
-BuildRequires:	qmake5
 BuildRequires:	ninja
 BuildRequires:	cmake(lxqt)
-BuildRequires:	cmake(Qt5Widgets)
-BuildRequires:	cmake(Qt5DBus)
-BuildRequires:	cmake(Qt5LinguistTools)
-BuildRequires:	cmake(KF5WindowSystem)
+BuildRequires:	cmake(Qt6Widgets)
+BuildRequires:	cmake(Qt6DBus)
+BuildRequires:	cmake(Qt6LinguistTools)
+BuildRequires:	cmake(KF6WindowSystem)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	lxqt-build-tools
 Conflicts:	lxqt-l10n < 0.12.0-6
@@ -43,8 +44,7 @@ Global keys config module for LXQt.
 %package -n %{libname}
 Summary:	The LXQt globalkeys library
 Group:		System/Libraries
-Conflicts:	%{_lib}lxqt-globalkeys-qt5_0 < 0.9.0
-%rename		%{_lib}lxqt-globalkeys-qt5_0
+%rename %{oldlibname}
 
 %description -n %{libname}
 The LXQt globalkeys library.
@@ -57,8 +57,7 @@ The LXQt globalkeys library.
 %package -n %{uiname}
 Summary:	The LXQt globalkeys UI library
 Group:		System/Libraries
-Conflicts:	%{_lib}lxqt-globalkeys-ui-qt5_0 < 0.9.0
-%rename		%{_lib}lxqt-globalkeys-ui-qt5_0
+%rename %{olduiname}
 
 %description -n %{uiname}
 The LXQt globalkeys UI library.
