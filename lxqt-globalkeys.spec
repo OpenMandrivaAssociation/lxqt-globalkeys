@@ -102,7 +102,7 @@ Development files for the LXQt globalkeys UI library.
 
 %prep
 %autosetup -p1
-%cmake_qt5 \
+%cmake \
 	-DUPDATE_TRANSLATIONS:BOOL=OFF \
 	-G Ninja
 
