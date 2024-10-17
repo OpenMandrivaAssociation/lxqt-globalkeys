@@ -18,7 +18,7 @@ Source0:	https://github.com/lxqt/lxqt-globalkeys/releases/download/%{version}/lx
 Release:	%{?git:0.%{git}.}2
 License:	LGPLv2.1+
 Group:		Graphical desktop/Other
-Url:		http://lxqt.org
+Url:		https://lxqt.org
 BuildRequires:	cmake
 BuildRequires:	ninja
 BuildRequires:	cmake(lxqt)
