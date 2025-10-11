@@ -15,7 +15,7 @@ Source0:	%{name}-%{git}.tar.xz
 %else
 Source0:	https://github.com/lxqt/lxqt-globalkeys/releases/download/%{version}/lxqt-globalkeys-%{version}.tar.xz
 %endif
-Release:	%{?git:0.%{git}.}1
+Release:	%{?git:0.%{git}.}2
 License:	LGPLv2.1+
 Group:		Graphical desktop/Other
 Url:		https://lxqt.org
