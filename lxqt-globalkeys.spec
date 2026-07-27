@@ -15,12 +15,12 @@ Source0:	%{name}-%{git}.tar.xz
 %else
 Source0:	https://github.com/lxqt/lxqt-globalkeys/releases/download/%{version}/lxqt-globalkeys-%{version}.tar.xz
 %endif
-Release:	%{?git:0.%{git}.}1
+Release:	%{?git:0.%{git}.}2
 License:	LGPLv2.1+
 Group:		Graphical desktop/Other
 Url:		https://lxqt.org
-BuildRequires:	cmake
-BuildRequires:	ninja
+BuildSystem:	cmake
+BuildOption:	-DUPDATE_TRANSLATIONS:BOOL=OFF
 BuildRequires:	cmake(lxqt)
 BuildRequires:	cmake(Qt6Widgets)
 BuildRequires:	cmake(Qt6DBus)
@@ -39,6 +39,7 @@ Global keys config module for LXQt.
 %{_sysconfdir}/xdg/autostart/lxqt-globalkeyshortcuts.desktop
 %{_datadir}/lxqt/globalkeyshortcuts.conf
 %dir %{_datadir}/lxqt/translations/lxqt-config-globalkeyshortcuts
+
 #----------------------------------------------------------------------------
 
 %package -n %{libname}
@@ -71,7 +72,7 @@ The LXQt globalkeys UI library.
 Summary:	Development files for the LXQt globalkeys library
 Group:		Development/C++
 Requires:	%{libname} = %{EVRD}
-%rename		%{_lib}lxqt-globalkeys-qt5-devel
+%rename %{_lib}lxqt-globalkeys-qt5-devel
 
 %description -n %{devname}
 Development files for the LXQt globalkeys library.
@@ -88,7 +89,7 @@ Development files for the LXQt globalkeys library.
 Summary:	Development files for the LXQt globalkeys UI library
 Group:		Development/C++
 Requires:	%{uiname} = %{EVRD}
-%rename		%{_lib}lxqt-globalkeys-ui-qt5-devel
+%rename %{_lib}lxqt-globalkeys-ui-qt5-devel
 
 %description -n %{uidevname}
 Development files for the LXQt globalkeys UI library.
@@ -98,29 +99,16 @@ Development files for the LXQt globalkeys UI library.
 %{_includedir}/lxqt-globalkeys-ui
 %{_libdir}/pkgconfig/lxqt-globalkeys-ui.pc
 %{_datadir}/cmake/lxqt-globalkeys-ui
+
 #----------------------------------------------------------------------------
 
-%prep
-%autosetup -p1
-%build
-%cmake \
-	-DUPDATE_TRANSLATIONS:BOOL=OFF \
-	-G Ninja
-# Need to be in a UTF-8 locale so grep (used by the desktop file
-# translation generator) doesn't scream about translations containing
-# "binary" (non-ascii) characters
+%build -p
 export LANG=en_US.utf-8
 export LC_ALL=en_US.utf-8
-%ninja_build
 
-%install
-# Need to be in a UTF-8 locale so grep (used by the desktop file
-# translation generator) doesn't scream about translations containing
-# "binary" (non-ascii) characters
+%install -p
 export LANG=en_US.utf-8
 export LC_ALL=en_US.utf-8
-%ninja_install -C build
 
+%install -a
 sed -i -e 's,^libdir=.*,libdir=%{_libdir},g' %{buildroot}%{_libdir}/pkgconfig/*.pc
-
-%find_lang %{name} --with-qt --all-name
