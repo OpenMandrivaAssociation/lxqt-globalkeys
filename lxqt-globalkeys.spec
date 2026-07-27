@@ -9,7 +9,7 @@
 
 Summary:	Global keys config module for LXQt
 Name:		lxqt-globalkeys
-Version:	2.3.0
+Version:	2.4.0
 %if 0%{?git:1}
 Source0:	%{name}-%{git}.tar.xz
 %else
